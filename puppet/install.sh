@@ -32,7 +32,10 @@ if [ "$1" != "" ] ; then
 	  git clone https://github.com/fazries/dbzl-test-1.git
 	  cd dbzl-test-1/
           sudo cp puppet/client/puppet.conf /etc/puppet/
-
+        
+        add)
+	  #add master ip address and domain
+	  echo "$2  master.dbzl.test" | sudo tee -a /etc/hosts
 
           ;;		
         *)
