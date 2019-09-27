@@ -15,7 +15,7 @@ if [ "$1" != "" ] ; then
 	  echo "$IPADDR  $PARAM.dbzl.test" | sudo tee -a /etc/hosts
 
 	  git clone https://github.com/fazries/dbzl-test-1.git
-	  cd dbzl-test-1/
+	  cd dbzl-test-1/puppet
           sudo cp -r code /etc/puppet/
 	  
 	  cat /etc/hosts | grep "dbzl"
@@ -32,8 +32,8 @@ if [ "$1" != "" ] ; then
 	  echo "$IPADDR  $DOMAIN.dbzl.test" | sudo tee -a /etc/hosts
 
 	  git clone https://github.com/fazries/dbzl-test-1.git
-	  cd dbzl-test-1/
-          sudo cp puppet/client/puppet.conf /etc/puppet/
+	  cd dbzl-test-1/puppet
+          sudo cp client/puppet.conf /etc/puppet/
 
 	  cat /etc/hosts | grep "dbzl"
 

@@ -1,6 +1,6 @@
 node default { }
 
-node '/^webserver\d+$/.dbzl.test' {
+node 'webserver-01.dbzl.test','webserver-02.dbzl.test' {
   # execute 'apt-get update'
   exec { 'apt update':                
    command => '/usr/bin/apt update' 
