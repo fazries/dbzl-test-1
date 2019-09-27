@@ -28,7 +28,8 @@ it will create several instance
 - puppet-master-0
 - Webserver-1
 - Webserver-2
-- target group and a load balancer
+- web-server-tg target group
+- load balancer
 
 ### output
 ```
@@ -79,4 +80,4 @@ chmod +x install.sh
 update /etc/hosts both on master and client
 
 # accessing the LB
-http://web-server-lb-667690712.eu-west-1.elb.amazonaws.com/
+### http://web-server-lb-667690712.eu-west-1.elb.amazonaws.com/
