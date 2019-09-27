@@ -54,6 +54,16 @@ webserver_public_ip = [
     54.xxx.205.xxx
 ]
 ```
+## Accessing the server
+### Bastion
+```
+cd dbzl-test-1/terraform/pem
+ssh -i bastion ubuntu@bastio_ip_address
+```
+From bastion you can access to webserver-1,webserver-2 and puppet-master. the application layer only can be access from inside or private subnet
+
+
+# Configuration Management
 ## puppet setup
 ### on client
 ```
@@ -66,5 +76,7 @@ chmod +x install.sh
 chmod +x install.sh
 ./install.sh master master
 ```
+update /etc/hosts both on master and client
+
 # accessing the LB
 http://web-server-lb-667690712.eu-west-1.elb.amazonaws.com/
