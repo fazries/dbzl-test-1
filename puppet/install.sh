@@ -17,6 +17,8 @@ if [ "$1" != "" ] ; then
 	  git clone https://github.com/fazries/dbzl-test-1.git
 	  cd dbzl-test-1/
           sudo cp -r code /etc/puppet/
+	  
+	  cat /etc/hosts | grep "dbzl"
 
           ;;
         slave)
@@ -32,6 +34,8 @@ if [ "$1" != "" ] ; then
 	  git clone https://github.com/fazries/dbzl-test-1.git
 	  cd dbzl-test-1/
           sudo cp puppet/client/puppet.conf /etc/puppet/
+
+	  cat /etc/hosts | grep "dbzl"
 
           ;; 
         add-master)
