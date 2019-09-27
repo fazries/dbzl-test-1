@@ -20,10 +20,6 @@ resource "aws_instance" "puppet_master" {
    "sre_candidate" = "${var.sre_candidate_tag}"
    "Name"          = "puppet-master-${count.index}"
  }
-  connection {
-    type = "ssh"
-    user = "ubuntu"
- }
 
 }
 
@@ -65,7 +61,22 @@ resource "aws_instance" "bastion" {
   connection {
     type = "ssh"
     user = "ubuntu"
- }
+  }
+
+  provisioner "file" {
+     source      = "${path.module}/../puppet/install.sh"
+     destination = "/tmp/install.sh"
+   }
+
+  provisioner "remote-exec" {
+    inline = [
+      "cp /tmp/install.sh ~/",
+      "chmod +x ~/install.sh",
+      "~/install.sh slave bastion",
+      "cp dbzl-test-1/terraform/pem/bastion ~/.ssh/id_rsa",
+      "chmod 700 ~/.ssh/id_rsa"
+    ]
+  }
 }
 
 ##########################
