@@ -1,7 +1,9 @@
 # dbzl-test-1
 
-architecture
+## building an architecture using Terraform
+### architecture
 
+```
   - ---------------------------------
   |    LOAD BALANCER
   |        |
@@ -13,20 +15,26 @@ architecture
   |      |PUPPET|    
   |---------------------------------
 BASTION 
+```
 
-#Terraform
+### Terraform
+```
 terraform init
 terraform plan
 terraform apply
+```
+it will create several instance
+- bastion-0
+- puppet-master-0
+- Webserver-1
+- Webserver-2
+- target group and a load balancer
 
-#output
+###output
+```
 bastion_ids = i-xxxxx0a5bd67cbb4c
-bastion_public_ip = [
-    34.xxx.208.xxx
-]
-puppet_master = [
-    10.10.0.42
-]
+bastion_public_ip = [34.xxx.208.xxx]
+puppet_master = [10.10.0.42]
 rtable_ids = rtb-0945a3ba5d75a46fb
 subnet_ids = [
     subnet-xxx2c5da883e155bd,
@@ -45,16 +53,18 @@ webserver_public_ip = [
     34.xxx.251.xxx,
     54.xxx.205.xxx
 ]
-
-# puppet setup
-## on client
+```
+## puppet setup
+### on client
+```
 chmod +x install.sh
 ./install.sh slave bastion|webserver
 ./install.sh add-master [master ip-address]
-
+```
 ## on master
+```
 chmod +x install.sh
 ./install.sh master master
-
-accessing the LB
+```
+# accessing the LB
 http://web-server-lb-667690712.eu-west-1.elb.amazonaws.com/
