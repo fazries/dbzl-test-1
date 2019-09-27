@@ -30,7 +30,7 @@ it will create several instance
 - Webserver-2
 - target group and a load balancer
 
-###output
+### output
 ```
 bastion_ids = i-xxxxx0a5bd67cbb4c
 bastion_public_ip = [34.xxx.208.xxx]
