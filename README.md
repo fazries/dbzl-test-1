@@ -23,13 +23,22 @@ terraform init
 terraform plan
 terraform apply
 ```
-it will create several instance
+
+the terraform will create:
+- a VCP
+- Internet GW
+- Routing table
+- 2 subnet with different zone
+
+instance creation:
 - bastion-0
 - puppet-master-0
 - Webserver-1
 - Webserver-2
 - web-server-tg target group
 - load balancer
+
+SSH access only allowed from internal IP address from bastion
 
 ### output
 ```
@@ -81,3 +90,13 @@ update /etc/hosts both on master and client
 
 # accessing the LB
 ### http://web-server-lb-667690712.eu-west-1.elb.amazonaws.com/
+
+# Room for improvement
+do a limitation of time, when working on this task, there's several point can be improve
+- bake an ami to put bastion pubkey, and install puppet agent
+- auto cert sign on puppet master
+- make autoscaling group from baked ami
+- terraform can be modulize
+- create public subnet and private subnet
+- move [ frontend, puppet master ] apps into private subnet, and ALB will handle the internet facing
+- hardening and tweaking webserver instances
